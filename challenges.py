@@ -28,12 +28,14 @@ def lcs_dp(strA, strB):
 
     # TODO: Fill in the table using a nested for loop.
 
-    return dp_table[rows-1][cols-1]
+    return dp_table[rows - 1][cols - 1]
+
 
 def knapsack(items, capacity):
     """Return the maximum value that can be stored in the knapsack using the
     items given."""
     pass
+
 
 def knapsack_dp(items, capacity):
     """Return the maximum value that can be stored in the knapsack using the
@@ -44,11 +46,13 @@ def knapsack_dp(items, capacity):
 
     # TODO: Fill in the table using a nested for loop.
 
-    return dp_table[rows-1][cols-1]
-    
+    return dp_table[rows - 1][cols - 1]
+
+
 def edit_distance(str1, str2):
     """Compute the Edit Distance between 2 strings."""
     pass
+
 
 def edit_distance_dp(str1, str2):
     """Compute the Edit Distance between 2 strings."""
@@ -58,4 +62,4 @@ def edit_distance_dp(str1, str2):
 
     # TODO: Fill in the table using a nested for loop.
 
-    return dp_table[rows-1][cols-1]
+    return dp_table[rows - 1][cols - 1]
