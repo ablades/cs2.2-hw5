@@ -108,6 +108,19 @@ def edit_distance_dp(str1, str2):
     cols = len(str2) + 1
     dp_table = [[0 for j in range(cols)] for i in range(rows)]
 
-    # TODO: Fill in the table using a nested for loop.
+    for i in range(1, rows):
+        for j in range(1, cols):
+            # stirng is empty value is length of prev + 1
+            if i == 0:
+                dp_table[i][j] = 1 + dp_table[i - 1][j]
+            elif j == 0:
+                dp_table[i][j] = 1 + dp_table[i][j - 1]
 
-    return dp_table[rows - 1][cols - 1]
+            # characters don't match
+            if str1[i - 1] != str2[j - 1]:
+                dp_table[i][j] = 1 + min(dp_table[i - 1][j], dp_table[i][j - 1], dp_table[i - 1][j - 1])
+            # characters match
+            else:
+                dp_table[i][j] = dp_table[i - 1][j - 1]
+    print(dp_table)
+    return 1 + dp_table[rows - 1][cols - 1]
