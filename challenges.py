@@ -64,7 +64,19 @@ def knapsack_dp(items, capacity):
     cols = capacity + 1
     dp_table = [[0 for j in range(cols)] for i in range(rows)]
 
-    # TODO: Fill in the table using a nested for loop.
+    for i in range(1, rows):
+        for j in range(1, cols):
+            # no items left
+            if i == 0 or j == 0:
+                dp_table[i][j] = 0
+            # check if item weight us greater than capacity
+            elif items[i - 1][1] > j:
+                dp_table[i][j] = dp_table[i - 1][j]
+            # choose max of adding item with or without cap
+            else:
+                cap_with = items[i - 1][2] + dp_table[i - 1][j - items[i - 1][1]]
+                cap_without = dp_table[i - 1][j]
+                dp_table[i][j] = max(cap_with, cap_without)
 
     return dp_table[rows - 1][cols - 1]
 
