@@ -13,9 +13,9 @@ class Memoize:
 def lcs(strA, strB):
     if len(strA) == 0 or len(strB) == 0:
         return 0
-    elif strA[-1] == strB[-1]: # if the last characters match
+    elif strA[-1] == strB[-1]:  # if the last characters match
         return 1 + lcs(strA[:-1], strB[:-1])
-    else: # if the last characters don't match
+    else:  # if the last characters don't match
         return max(lcs(strA[:-1], strB), lcs(strA, strB[:-1]))
 
 
@@ -26,7 +26,14 @@ def lcs_dp(strA, strB):
 
     dp_table = [[0 for j in range(cols)] for i in range(rows)]
 
-    # TODO: Fill in the table using a nested for loop.
+    for i in range(1, rows):
+        for j in range(1, cols):
+            # characters match increment sub sequence value
+            if strB[j - 1] == strA[i - 1]:
+                dp_table[i][j] = dp_table[i - 1][j - 1] + 1
+            # characters do not match take the maximum of the two previous subsequences
+            else:
+                dp_table[i][j] = max(dp_table[i][j - 1], dp_table[i - 1][j])
 
     return dp_table[rows - 1][cols - 1]
 
