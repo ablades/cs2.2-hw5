@@ -122,5 +122,5 @@ def edit_distance_dp(str1, str2):
             # characters match
             else:
                 dp_table[i][j] = dp_table[i - 1][j - 1]
-    print(dp_table)
+                
     return 1 + dp_table[rows - 1][cols - 1]
